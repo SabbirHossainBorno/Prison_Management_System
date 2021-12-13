@@ -1,0 +1,28 @@
+this.Sql = @"update SupervisorTable
+                         set name = '" + this.txt_name.Text + @"',
+                         password = '" + this.txt_pass.Text + @"',
+                         dateofbirth= '" + this.dtp_dateofbirth.Text + @"',
+                         gender = '" + this.cmb_gender.Text + @"',
+                         bloodgroup = '" + this.cmb_bloodGrp.Text + @"',
+                         presentaddress = '" + this.txt_PreAddress.Text + @"',
+                         parmanentaddress = '" + this.txt_ParAddress.Text + @"',
+                         mobileno = '" + this.txt_mobileno.Text + @"',
+                         nidno = '" + this.txt_nidno.Text + @"',
+                         passportno = '" + this.txt_passportno.Text + @"'
+                         where id = '" + this.txt_id.Text + "';";
+
+            int count = this.Dac.ExecuteUpdateQuery(this.Sql);
+            if (count == 1)
+            {
+                MessageBox.Show("Supervisor's Data Updated");
+            }
+            else
+            {
+                MessageBox.Show("Data Insertion Failed");
+            }
+            this.PopulateGridView();
+            this.ClearAll();
+        }
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            this.ClearAll();
